@@ -37,7 +37,7 @@
 <section id="wrapper">
   <div id="scroller">
     <div class="main-top">
-      <div class="dropdown"><a href="" class="menu" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><img src="img/menu.png" /></a>
+      <div class="dropdown"><!--<a href="" class="menu" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><img src="img/menu.png" /></a>-->
         <ul class="dropdown-menu main-menu" role="menu" aria-labelledby="dropdownMenu1">
           <li class="dropdown-submenu"><a tabindex="-1" data-toggle="dropdown" href="#"><img src="img/order.png" alt="" /> Order</a>
             <ul class="dropdown-menu">
@@ -118,8 +118,13 @@
             </ul>
           </li><!--Manage Menu End-->
         </ul>
+        <span style="float:right; font-weight:bold;" class="titleName">Welcome user</span><br>
+
+      
       </div>
-      <span class="page-heading">Dashboard</span></div>
+      <span class="page-heading">Dashboard</span>
+        <span style="float:right; color:#06F;" id="logoutUser">Logout</span>
+        </div>
     <div class="contentarea login">
      
     </div>
@@ -132,6 +137,7 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-submenu.min.js"></script>
+<script type="application/javascript" src="js/login/check.js" ></script>
 <script type="text/javascript" src="js/iscroll.js"></script>
 
 <script type="text/javascript">
@@ -158,9 +164,19 @@ document.addEventListener('touchmove', function (e) { e.preventDefault(); }, fal
 
 $(document).ready(function(e) {
    var randam = window.localStorage.getItem('ctrl4c');
-	alert(randam);
 	var keyvalue = JSON.parse(window.localStorage.getItem(randam));
+	$(".titleName").html('Welcome '+keyvalue.fullname);
 	//alert(keyvalue.Id);
+});
+$(document).on("click","#logoutUser",function(){
+	if(window.confirm('Do you want to logout'))
+	{
+		if(window.localStorage.getItem('ctrl4c'))
+		{
+			window.localStorage.clear();
+			window.location='index.html';
+		}	
+	}
 });
 
 </script>
