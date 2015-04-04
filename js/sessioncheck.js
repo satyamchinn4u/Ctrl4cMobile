@@ -6,5 +6,8 @@ if(localStorage["ctrl4c"])
 	window.location="dashboard.html";
 	
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> origin/master
