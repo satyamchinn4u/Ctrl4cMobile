@@ -123,7 +123,7 @@
       
       </div>
       <span class="page-heading">Dashboard</span>
-        <span style="float:right; color:#06F;" id="logoutUser">Logout</span>
+        <button style="float:right; color:#06F; background:none!important; border:none; padding:0!important;" id="logoutUser">Logout</button>
         </div>
     <div class="contentarea login">
      
@@ -168,15 +168,6 @@ $(document).ready(function(e) {
 	$(".titleName").html('Welcome '+keyvalue.fullname);
 	//alert(keyvalue.Id);
 });
-$(document).on("click","#logoutUser",function(){
-	if(window.confirm('Do you want to logout'))
-	{
-		if(window.localStorage.getItem('ctrl4c'))
-		{
-			window.localStorage.clear();
-			window.location='index.html';
-		}	
-	}
-});
+
 
 </script>
