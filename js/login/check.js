@@ -25,7 +25,7 @@ $(document).on("click","#logoutUser",function(){
 				   if (obj && obj.result === true) {
 					
 				window.localStorage.clear();
-			    window.location='index.html';
+			    	window.location='index.html';
 				   }
 			   },
 			   error: function(e) {

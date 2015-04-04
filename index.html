@@ -4,7 +4,6 @@
 <!--[if (gt IEMobile 7)|!(IEMobile)]><!-->
 <html class="no-js" lang="en">
 <!--<![endif]-->
-
 <!-- HTML5 Boilerplate -->
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
@@ -53,10 +52,30 @@ function loaded () {
 document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 
 </script>
+<style type="text/css">
+#main_div_load{
+	background-color:#FFF;
+	display:none;
+	width:100%;
+	height:100%;
+	opacity:100%;
+	text-align:center;
+	position: absolute;
+	transition: opacity 0.15s linear 0s;
+	width: 100%;
+	z-index: 9999;
+	}
+	#loadingimg{
+		margin-top:23%;
+		}
+</style>
 </head>
 
 <body onload="loaded()">
-<header><img src="img/logo.png" /></header>
+<div id="main_div_load">
+<img src="img/loading.gif" id="loadingimg" />
+</div>
+<div id="main_div"><header><img src="img/logo.png" /></header>
 <section id="wrapper">
   <div id="scroller">
     <div class="contentarea login"> 
@@ -88,7 +107,7 @@ document.addEventListener('touchmove', function (e) { e.preventDefault(); }, fal
   <div class="col-xs-4 fb"><img src="img/fb.png" /></div>
   <div class="col-xs-4 linkedin"><img src="img/linkedin.png" /></div>
   <div class="col-xs-4 google"><img src="img/google.png" /></div>
-</div>
+</div></div>
 </body>
 </html>
 <script type="application/javascript">
@@ -105,12 +124,14 @@ function randam()
    return text.toLowerCase();
 }
 $(document).on('click','#submitLogin',function(){
+
+	$("#main_div").hide();
+	$("#main_div_load").show();
 	var email=$("#emailId").val();
 	var password=$("#password").val();
 	
-	var URL = "http://automation.ctrl4c.com/mobileapi/index.php/mobilelogin/";
-	//alert(URL);
-	$.ajax({
+   var URL = "http://automation.ctrl4c.com/mobileapi/index.php/mobilelogin/";
+   $.ajax({
    type: "POST",
    url: URL+'login',
    contentType: "application/x-www-form-urlencoded; charset=utf-8",
@@ -163,6 +184,8 @@ $(document).on('click','#submitLogin',function(){
 		 
        }else if(obj.failed=== true)
 	   {
+		    $("#main_div").show();
+			$("#main_div_load").hide();
 		    $("#emailId").css('border','solid 1px #F00');
 			$("#emailId").css("webkit-transition","box-shadow 0.3s, border 0.3s");
 			$("#emailId").css("-moz-transition","box-shadow 0.3s, border 0.3s");
