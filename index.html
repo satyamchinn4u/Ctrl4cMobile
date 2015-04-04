@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!-- HTML5 Mobile Boilerplate -->
+<!--[if IEMobile 7]><html class="no-js iem7"><![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<!-- HTML5 Boilerplate -->
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Cloud Hosting Services India | Tier 4 Data Center</title>
+<meta name="description" content="Ctrl4C offers Cloud Hosting Services, Cloud Solutions, Cloud Disaster Recovery Services, Cloud Monitoring, Cloud Database &amp; Bigdata and many other cloud based services.">
+<meta name="keywords" content="cloud hosting services, tier 4 cloud, cloud service providers, cloud hosting india, cloud solutions">
+<meta name="author" content="www.ctrl4c.com">
+<meta http-equiv="cleartype" content="on">
+<link rel="shortcut icon" href="/favicon.ico">
+
+<!-- Responsive and mobile friendly stuff -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script type="text/javascript" src="js/sessioncheck.js"></script>
+<script type="text/javascript">
+
+var myScroll;
+
+function loaded () {
+	myScroll = new IScroll('#wrapper', {
+		scrollbars: true,
+		mouseWheel: true,
+		interactiveScrollbars: true,
+		shrinkScrollbars: 'scale',
+		fadeScrollbars: true
+	});
+}
+
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+</script>
+</head>
+
+<body onload="loaded()">
+<header><img src="img/logo.png" /></header>
+<section id="wrapper">
+  <div id="scroller">
+    <div class="contentarea login"> 
+      <!-- <form method="post" id="submitLogin" class="smart-form">-->
+      <div class="form-group">
+        <input type="email" class="form-control" placeholder="Username (email)" id="emailId" value="mahesh.t@ctrls.in">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password" id="password" value="welcome@123">
+      </div>
+      <div class="form-group">
+        <p class="text-right"><a href="forgot-password.html" rel="external">Forgot Password?</a></p>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-success" id="submitLogin">Submit</button>
+      </div>
+      <div class="form-group"><a href="register.html" class="btn btn-info" rel="external">New Registration</a></div>
+      <div class="login-bottom">
+        <div class="col-xs-4"><img src="img/login-bottom-1.png" /></div>
+        <div class="col-xs-4"><img src="img/login-bottom-2.png" /></div>
+        <div class="col-xs-4"><img src="img/login-bottom-3.png" /></div>
+      </div>
+      <!--  </form>--> 
+    </div>
+  </div>
+</section>
+<div class="login-footer">
+  <div class="login-footer-title">Login using</div>
+  <div class="col-xs-4 fb"><img src="img/fb.png" /></div>
+  <div class="col-xs-4 linkedin"><img src="img/linkedin.png" /></div>
+  <div class="col-xs-4 google"><img src="img/google.png" /></div>
+</div>
+</body>
+</html>
+<script type="application/javascript">
+function randam()
+{
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < 24; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+		text += possible.charAt(Math.floor(Math.random() * text));
+		text += possible.charAt(Math.floor(Math.random() * text));
+
+   return text.toLowerCase();
+}
+$(document).on('click','#submitLogin',function(){
+	var email=$("#emailId").val();
+	var password=$("#password").val();
+	
+	var URL = "http://automation.ctrl4c.com/mobileapi/index.php/mobilelogin/";
+	//alert(URL);
+	$.ajax({
+   type: "POST",
+   url: URL+'login',
+   contentType: "application/x-www-form-urlencoded; charset=utf-8",
+   dataType: "json",
+   data: {email: email, password: password},
+   crossDomain: true,
+   cache: false,
+   success: function(data) {
+    
+	   obj = JSON.parse(data);
+	//   alert(obj.level);
+	   if (obj && obj.success === true) {
+     
+		if(obj.data)
+		{
+			var randomData= randam();
+			var rawdata=obj.data;
+	 		objStorage = JSON.parse(rawdata);
+			var clientid = objStorage.clientid;
+			$.ajax({
+			   type: "POST",
+			   url: URL+'userkeylog',
+			   contentType: "application/x-www-form-urlencoded; charset=utf-8",
+			   dataType: "json",
+			   data: {key: randomData, clientid:clientid,email:email,password:password },
+			   crossDomain: true,
+			   cache: false,
+			   success: function(data) {
+				alert(data);
+				   obj = JSON.parse(data);
+				//   alert(obj.level);
+				   if (obj && obj.success === true) {
+					
+				//window.location.href = 'dashboard.html';
+				window.localStorage.setItem('ctrl4c',randomData);
+			    window.localStorage.setItem(window.localStorage.getItem('ctrl4c'),rawdata);
+			    window.location.href = 'dashboard.html';
+				   }else if(obj.failed=== true)
+				   {
+					   alert('somthing went wrong');
+				   }
+			   },
+			   error: function(e) {
+				   alert('Error: ' + e.message);
+			   }
+	   });
+			
+
+			
+		}
+		 
+       }else if(obj.failed=== true)
+	   {
+		   alert('Invalid user login or password');
+	   }
+   },
+   error: function(e) {
+       alert('Error: ' + e.message);
+   }});
+	});
+</script>
