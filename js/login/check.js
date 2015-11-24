@@ -6,7 +6,7 @@ if(!window.localStorage.getItem('ctrl4c'))
 }
 
 $(document).on("click","#logoutUser",function(){
-   var URL = "http://automation.ctrl4c.com/mobileapi/index.php/mobilelogin/";
+   var URL = "/mobilelogin/";
 	if(window.confirm('Do you want to logout'))
 	{
 		if(window.localStorage.getItem('ctrl4c'))
